@@ -49,6 +49,8 @@ author:
 
 # Add links to the sidebar.
 menu:
+  - title:             Zigbee
+    url:               /zigbee/
   - title:             Example
     url:               /example/
   - title:             Documentation
