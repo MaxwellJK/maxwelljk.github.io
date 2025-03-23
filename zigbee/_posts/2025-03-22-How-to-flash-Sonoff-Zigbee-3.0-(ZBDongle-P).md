@@ -25,8 +25,6 @@ I am not here to take any credit for this. I just found it but i will also forge
 ###### Python requirements
 On Macs python is already installed, so I am skipping this step.
 
-## Code blocks
-
 ~~~bash
 python3 -m venv .venv
 source .venv/bin/activate
