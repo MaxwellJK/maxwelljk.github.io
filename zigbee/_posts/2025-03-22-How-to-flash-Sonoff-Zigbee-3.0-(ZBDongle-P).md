@@ -65,7 +65,9 @@ Replace the `/dev/tty.usbserial-0001` with the one identified above.
 {:.note.smaller}
 
 `-ewv` means Mass erase, write, verify
+
 `-p` is the port on which your device is running, in this case /dev/tty.usbserial-0001
+
 `--bootloader-sonoff-usb` means that the bootloader is activated by the script, by toggeling RTS and DTR in the correct pattern for Sonoff USB dongle (remove this if your device is not a Sonoff dongle).
 
 The output should look like
