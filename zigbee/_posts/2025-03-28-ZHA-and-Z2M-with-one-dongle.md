@@ -7,14 +7,13 @@ sitemap: false
 hide_last_modified: true
 ---
 
-## Stating the problem
+Internet is always full of interesting articles that can inspire others. 
+Such inspirations can come completely unexpected - but each situation is different so it's not always possible to replicate step by step what was presented to us...and sometimes a certain amount of creativity is needed.
 
-Internet is always full of interesting articles that can inspire others to do the same.
-
-Each situation is different so it's not always possible to replicate step by step what was presented to us...and sometimes a certain amount of creativity is needed.
-
-The relevant article was mentioning how, with a specific Zigbee dongle, the author was able to connect both ZHA and Z2M to their dongle and make use of both interfaces for test purposes.
+This time what inspired me was an article which mentioned how, with a specific Zigbee dongle, the author was able to connect both ZHA and Z2M to their dongle and make use of both interfaces for test purposes.
 I fancied that, but it wasn't possible. Or was it?
+
+## Stating the problems
 
 To start with, my device was different - theirs was able to connect to the network via ethernet port - mine is connected to USB.
 Second, I didn't need it for test purposes, mine was an actual need - a [zigbee switch](https://moeshouse.com/products/zigbee-wireless-self-powered-scene-switch?srsltid=AfmBOoowN9oyVflEjpEAbNJ4ATrIt3V-L45Hy6gR23COSmIwuu8UTP-o) was not compatible yet with ZHA but it was [under development](https://github.com/Koenkk/zigbee2mqtt/issues/19405) in Z2M, with promising results.
