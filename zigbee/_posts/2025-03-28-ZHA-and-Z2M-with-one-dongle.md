@@ -2,7 +2,7 @@
 layout: post
 title: Running ZHA and Z2M at the same time with one single USB dongle (Sonoff Zigbee 3.0 P)
 description: >
-  Something
+  a.k.a. how to make my life miserable
 sitemap: false
 hide_last_modified: true
 ---
