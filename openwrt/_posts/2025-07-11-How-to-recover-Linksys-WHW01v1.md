@@ -1,8 +1,8 @@
 ---
 layout: post
-title: How to reboot a Linksys WHW01 v1 running OpenWRT
+title: How to recover a Linksys WHW01 v1 running OpenWRT
 description: >
-  Failsafe mode
+  Access the router in failsafe mode
 sitemap: false
 hide_last_modified: true
 ---

@@ -10,7 +10,7 @@ slug: openwrt
 
 # (Optional) Write a short (~150 characters) description of this featured tag.
 description: >
-  Routing done in the opensource way
+  Routing done in the Open Source way
 
 # (Optional) You can disable grouping posts by date.
 # no_groups: true
