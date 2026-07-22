@@ -49,6 +49,8 @@ author:
 
 # Add links to the sidebar.
 menu:
+  - title:             Docker
+    url:               /docker/
   - title:             OpenWRT
     url:               /openwrt/
   - title:             Zigbee
