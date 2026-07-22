@@ -5,6 +5,7 @@ description: >
   a.k.a. how to make my life miserable
 sitemap: false
 hide_last_modified: true
+comments: true
 ---
 
 Internet is always full of interesting articles that can inspire others. 

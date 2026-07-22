@@ -5,6 +5,7 @@ description: >
   Access the router in failsafe mode
 sitemap: false
 hide_last_modified: true
+comments: true
 ---
 
 That's an easy one!

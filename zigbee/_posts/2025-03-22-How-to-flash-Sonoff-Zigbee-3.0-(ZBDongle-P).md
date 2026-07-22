@@ -5,6 +5,7 @@ description: >
   How to flash a zigbee dongle in 10 mins (or less)
 sitemap: false
 hide_last_modified: true
+comments: true
 ---
 
 During one of my "it would be cool to have that in my home automation setup" moment, I started pushing my limits and exploring uncharted territory.
