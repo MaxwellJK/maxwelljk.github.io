@@ -8,13 +8,10 @@ hide_last_modified: true
 comments: true
 ---
 
-Docker, you fill my life with joy - until you really dont!
-I recently span up a new cloud compute instance and leveraging my previous experiences and following the setup already running on other instances (docker + tailscale), I installed Docker.
+Docker, you fill my life with joy - until you really don't!
+I recently span up a new cloud compute instance and leveraging my previous experiences and following the setup already running on other instances (docker + tailscale), I installed all the tools I needed to connect to the services I wanted to deploy.
 
-Great!
-
-Then tailscale, then certificates to control the instance via portainer.
-I then logged off.
+Great - I then logged off.
 
 A few days later, it was the moment to deploy something. Anything really.
 
@@ -51,12 +48,11 @@ It turns out that recent Docker versions (mid-late 2025 onward) added a hardenin
 <a href="https://fivenineslab.com/blog/docker-nftables-port-blocking-priority-chains" target="_blank">This</a> is the link Claude provided confirming the findings, with possible solutions.
 
 But the solution it provided me was a different one... and guess what?? it didn't work!
-Not completely at least: it was going in the right direction for sure, but it wasn't consistent and mostly, it wasn't permanent.
+Not completely at least: it was going in the right direction for sure, but it wasn't consistent and, mostly, it wasn't permanent.
 
 It turns out that there is a much quicker and standard solution: allowing direct routing in docker.
 
-Easy peasy:
-add `--allow-direct-routing` to `docker.service`
+Add `--allow-direct-routing` to `docker.service`
 ~~~bash
 sudo systemctl edit docker.service --full
 ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=... --tlscert=... --tlskey=/home/ubuntu/... -H fd:// -H=tcp://0.0.0.0:2376 --allow-direct-routing
