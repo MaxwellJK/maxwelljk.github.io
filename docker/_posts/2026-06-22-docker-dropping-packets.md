@@ -25,7 +25,7 @@ Browser on mac, on phone, ssh on mac, on other containers: timeout!
 
 ###### Claude, come to the rescue!
 
-Not going to lie, after looking and realising nothing was wrong in my configuration I turned to AI asking CLaude to help me debug the issue.
+Not going to lie, after looking and realising nothing was wrong in my configuration I turned to AI asking Claude to help me debug the issue.
 
 It wasn't easy and it took some time but finally the we (it) found a lead:
 
@@ -48,34 +48,32 @@ It turns out that recent Docker versions (mid-late 2025 onward) added a hardenin
 
 [This](https://fivenineslab.com/blog/docker-nftables-port-blocking-priority-chains) is the link Claude provided confirming the findings, with possible solutions.
 
-But the solution it provided me was a different one. Running this command
+<a href="https://fivenineslab.com/blog/docker-nftables-port-blocking-priority-chains" target="_blank">This</a> is the link Claude provided confirming the findings, with possible solutions.
+
+But the solution it provided me was a different one... and guess what?? it didn't work!
+Not completely at least: it was going in the right direction for sure, but it wasn't consistent and mostly, it wasn't permanent.
+
+It turns out that there is a much quicker and standard solution: allowing direct routing in docker.
+
+Easy peasy:
+add `--allow-direct-routing` to `docker.service`
 ~~~bash
-sudo iptables -L ts-forward -n -v
-~~~
-this is the result
-~~~bash
-Chain ts-forward (1 references)
- pkts bytes target     prot opt in     out     source               destination         
-    0     0 MARK       all  --  tailscale0 *       0.0.0.0/0            0.0.0.0/0            MARK xset 0x40000/0xff0000
-    0     0 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            mark match 0x40000/0xff0000
-    0     0 DROP       all  --  *      tailscale0  100.64.0.0/10        0.0.0.0/0           
-    0     0 ACCEPT     all  --  *      tailscale0  0.0.0.0/0            0.0.0.0/0
-~~~
-
-And the key part is `0x40000/0xff0000`.
-
-Opening (or creating in my case) the file `/etc/docker/daemon.json` and paste the following
-
-~~~json
-{
-  "bridge-accept-fwmark": "0x40000/0xff0000" 
-}
-~~~
-
-Restart docker 
-
-~~~bash
+sudo systemctl edit docker.service --full
+ExecStart=/usr/bin/dockerd --tlsverify --tlscacert=... --tlscert=... --tlskey=/home/ubuntu/... -H fd:// -H=tcp://0.0.0.0:2376 --allow-direct-routing
+sudo systemctl daemon-reload
 sudo systemctl restart docker
 ~~~
 
-and that's it... !hat way the rule regenerates correctly from the start!
+or allow direct routing via `daemon.json` config file
+
+~~~bash
+sudo tee /etc/docker/daemon.json << 'EOF'
+{
+  "allow-direct-routing": true
+}
+EOF
+sudo systemctl restart docker
+~~~
+
+One of them, not both.
+Even after reboot, solution is persisted and docker services are accessible by their IP!
