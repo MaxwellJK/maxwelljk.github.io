@@ -9,6 +9,7 @@ comments: true
 ---
 
 Docker, you fill my life with joy - until you really don't!
+
 I recently span up a new cloud compute instance and leveraging my previous experiences and following the setup already running on other instances (docker + tailscale), I installed all the tools I needed to connect to the services I wanted to deploy.
 
 Great - I then logged off.
@@ -42,8 +43,6 @@ table ip raw {
 This is a custom rule in the raw table. It says: "any packet destined for 172.29.2.2 that doesn't arrive on br-50a1eccc3fa3 gets dropped."
 
 It turns out that recent Docker versions (mid-late 2025 onward) added a hardening feature that inserts raw table anti-spoofing rules for user-defined bridge networks — specifically to prevent external hosts from sending traffic directly to a container's internal IP, bypassing the normal published-port/NAT path. 
-
-[This](https://fivenineslab.com/blog/docker-nftables-port-blocking-priority-chains) is the link Claude provided confirming the findings, with possible solutions.
 
 <a href="https://fivenineslab.com/blog/docker-nftables-port-blocking-priority-chains" target="_blank">This</a> is the link Claude provided confirming the findings, with possible solutions.
 
